@@ -1,0 +1,21 @@
+```yaml
+cff-version: 1.2.0
+message: "If you use this work in your research, please cite it as follows."
+authors:
+  - family-names: Li
+    given-names: Wenkai
+  - family-names: Liu
+    given-names: Jiarui
+  - family-names: Liu
+    given-names: Andy
+  - family-names: Zhou
+    given-names: Xuhui
+  - family-names: Diab
+    given-names: Mona
+  - family-names: Sap
+    given-names: Maarten
+title: "BIG5-CHAT: Shaping LLM Personalities Through Training on Human-Grounded Data"
+version: "2024"
+doi: "10.48550/arXiv.2410.16491"
+url: "https://arxiv.org/abs/2410.16491"
+date-released: "2024-10-21"
