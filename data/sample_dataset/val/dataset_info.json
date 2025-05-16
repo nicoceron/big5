@@ -1,0 +1,32 @@
+{
+  "citation": "",
+  "description": "",
+  "features": {
+    "text": {
+      "dtype": "string",
+      "_type": "Value"
+    },
+    "openness": {
+      "dtype": "float64",
+      "_type": "Value"
+    },
+    "conscientiousness": {
+      "dtype": "float64",
+      "_type": "Value"
+    },
+    "extraversion": {
+      "dtype": "float64",
+      "_type": "Value"
+    },
+    "agreeableness": {
+      "dtype": "float64",
+      "_type": "Value"
+    },
+    "neuroticism": {
+      "dtype": "float64",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": ""
+}

@@ -1,0 +1,327 @@
+{
+  "bfi_responses": {
+    "1": {
+      "text": "Is talkative",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "E",
+      "is_reversed": false
+    },
+    "2": {
+      "text": "Tends to find fault with others",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "A",
+      "is_reversed": true
+    },
+    "3": {
+      "text": "Does a thorough job",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "C",
+      "is_reversed": false
+    },
+    "4": {
+      "text": "Is depressed, blue",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "N",
+      "is_reversed": false
+    },
+    "5": {
+      "text": "Is original, comes up with new ideas",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "O",
+      "is_reversed": false
+    },
+    "6": {
+      "text": "Is reserved",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "E",
+      "is_reversed": true
+    },
+    "7": {
+      "text": "Is helpful and unselfish with others",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "A",
+      "is_reversed": false
+    },
+    "8": {
+      "text": "Can be somewhat careless",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "C",
+      "is_reversed": true
+    },
+    "9": {
+      "text": "Is relaxed, handles stress well",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "N",
+      "is_reversed": true
+    },
+    "10": {
+      "text": "Is curious about many different things",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "O",
+      "is_reversed": false
+    },
+    "11": {
+      "text": "Is full of energy",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "E",
+      "is_reversed": false
+    },
+    "12": {
+      "text": "Starts quarrels with others",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "A",
+      "is_reversed": true
+    },
+    "13": {
+      "text": "Is a reliable worker",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "C",
+      "is_reversed": false
+    },
+    "14": {
+      "text": "Can be tense",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "N",
+      "is_reversed": false
+    },
+    "15": {
+      "text": "Is ingenious, a deep thinker",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "O",
+      "is_reversed": false
+    },
+    "16": {
+      "text": "Generates a lot of enthusiasm",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "E",
+      "is_reversed": false
+    },
+    "17": {
+      "text": "Has a forgiving nature",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "A",
+      "is_reversed": false
+    },
+    "18": {
+      "text": "Tends to be disorganized",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "C",
+      "is_reversed": true
+    },
+    "19": {
+      "text": "Worries a lot",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "N",
+      "is_reversed": false
+    },
+    "20": {
+      "text": "Has an active imagination",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "O",
+      "is_reversed": false
+    },
+    "21": {
+      "text": "Tends to be quiet",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "E",
+      "is_reversed": true
+    },
+    "22": {
+      "text": "Is generally trusting",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "A",
+      "is_reversed": false
+    },
+    "23": {
+      "text": "Tends to be lazy",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "C",
+      "is_reversed": true
+    },
+    "24": {
+      "text": "Is emotionally stable, not easily upset",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "N",
+      "is_reversed": true
+    },
+    "25": {
+      "text": "Is inventive",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "O",
+      "is_reversed": false
+    },
+    "26": {
+      "text": "Has an assertive personality",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "E",
+      "is_reversed": false
+    },
+    "27": {
+      "text": "Can be cold and aloof",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "A",
+      "is_reversed": true
+    },
+    "28": {
+      "text": "Perseveres until the task is finished",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "C",
+      "is_reversed": false
+    },
+    "29": {
+      "text": "Can be moody",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "N",
+      "is_reversed": false
+    },
+    "30": {
+      "text": "Values artistic, aesthetic experiences",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "O",
+      "is_reversed": false
+    },
+    "31": {
+      "text": "Is sometimes shy, inhibited",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "E",
+      "is_reversed": true
+    },
+    "32": {
+      "text": "Is considerate, kind to almost everyone",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "A",
+      "is_reversed": false
+    },
+    "33": {
+      "text": "Does things efficiently",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "C",
+      "is_reversed": false
+    },
+    "34": {
+      "text": "Remains calm in tense situations",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "N",
+      "is_reversed": true
+    },
+    "35": {
+      "text": "Prefers work that is routine",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "O",
+      "is_reversed": true
+    },
+    "36": {
+      "text": "Is outgoing, sociable",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "E",
+      "is_reversed": false
+    },
+    "37": {
+      "text": "Is sometimes rude to others",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "A",
+      "is_reversed": true
+    },
+    "38": {
+      "text": "Makes plans and follows through on them",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "C",
+      "is_reversed": false
+    },
+    "39": {
+      "text": "Gets nervous easily",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "N",
+      "is_reversed": false
+    },
+    "40": {
+      "text": "Likes to reflect, play with ideas",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "O",
+      "is_reversed": false
+    },
+    "41": {
+      "text": "Has few artistic interests",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "O",
+      "is_reversed": true
+    },
+    "42": {
+      "text": "Likes to cooperate with others",
+      "raw_score": 1,
+      "scored_value": 1,
+      "trait_abbr": "A",
+      "is_reversed": false
+    },
+    "43": {
+      "text": "Is easily distracted",
+      "raw_score": 1,
+      "scored_value": 5,
+      "trait_abbr": "C",
+      "is_reversed": true
+    },
+    "44": {
+      "text": "Is sophisticated in art, music, or literature",
+      "raw_score": null,
+      "scored_value": null,
+      "trait_abbr": "O",
+      "is_reversed": false
+    }
+  },
+  "trait_scores": {
+    "Extraversion": 3.0,
+    "Agreeableness": 3.2857142857142856,
+    "Conscientiousness": 3.0,
+    "Neuroticism": 1.8,
+    "Openness": 2.0
+  },
+  "script_args": {
+    "base_model_name": "NousResearch/Meta-Llama-3-8B-Instruct",
+    "peft_model_path": "./results_sft_lowN_highC/big5-llama-3-8b-lowN-highC-adapters/",
+    "output_file": "./eval_results/sft_lowN_highC_bfi_results_prompted.json",
+    "device": "mps",
+    "personality_prompt": null
+  },
+  "timestamp": "2025-05-15T21:02:36.856982"
+}

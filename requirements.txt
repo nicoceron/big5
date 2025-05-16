@@ -1,0 +1,23 @@
+torch>=2.0.0
+transformers>=4.30.0
+datasets>=2.12.0
+pandas>=2.0.0
+numpy>=1.24.0
+tqdm>=4.65.0
+wandb>=0.15.0
+scikit-learn>=1.2.0
+matplotlib>=3.7.0
+accelerate>=0.20.0
+ollama>=0.1.5
+trl>=0.7.0
+bitsandbytes>=0.42.0
+peft>=0.7.0
+
+# For PsychGenerator (if needed, should be installed already)
+# nltk
+# pandas (already listed)
+
+# Removed:
+# unsloth>=2024.5
+# unsloth[mps]>=2024.5
+# unsloth[apple-m1] @ git+https://github.com/unslothai/unsloth.git 

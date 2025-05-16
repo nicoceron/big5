@@ -1,0 +1,10 @@
+2025-05-15 18:39:58,484 - __main__ - INFO - Running personality test for trait: o
+2025-05-15 18:39:58,485 - __main__ - INFO - Loaded 4 examples from data/soda/soda_train.csv
+2025-05-15 18:39:58,485 - __main__ - INFO - Using example with topic: Political analyst
+2025-05-15 18:39:58,485 - __main__ - INFO - Persona: [{\speaker\": \"PersonX\"
+2025-05-15 18:39:58,485 - __main__ - INFO - Contains dialogue with 61 turns
+2025-05-15 18:39:58,485 - __main__ - INFO - Prompt: You are [{\speaker\": \"PersonX\". What are your thoughts on Political analyst?
+2025-05-15 18:39:58,485 - __main__ - INFO - Generating response with gemma3-openness:latest
+2025-05-15 18:40:06,963 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-15 18:40:06,964 - __main__ - INFO - Saved response to logs/personality_test_o.json
+2025-05-15 18:40:06,964 - __main__ - INFO - Personality test completed successfully

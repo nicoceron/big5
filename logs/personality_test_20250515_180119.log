@@ -1,0 +1,5 @@
+2025-05-15 18:01:19,140 - __main__ - INFO - Running personality test for trait: e
+2025-05-15 18:01:19,140 - __main__ - INFO - Prompt: Describe how you would behave at a social gathering where you don't know many people.
+2025-05-15 18:01:19,140 - __main__ - INFO - Generating response with gemma3-extraversion:latest
+2025-05-15 18:01:51,158 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-15 18:01:51,159 - __main__ - INFO - Personality test completed successfully

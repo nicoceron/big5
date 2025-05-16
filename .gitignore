@@ -1,0 +1,62 @@
+# Pycache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# IDE / Editor specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Large files and model checkpoints
+*.pt
+*.safetensors
+*.bin
+*.pth
+*.onnx
+*.arrow
+
+# Model cache directories
+.cache/
+hf_cache/
+~/.cache/huggingface/
+
+# Specific model directories
+big5-llama-3-8b-standard-sft/
+results_sft_lowN_highC_3k_data/
+results_sft_standard/
+checkpoint/
+
+# Specific large files / directories we encountered
+results_sft_lowN_highC_3k_data/checkpoint-*/optimizer.pt
+results_sft_standard/checkpoint-*/optimizer.pt
+results_sft_lowN_highC/checkpoint-*/optimizer.pt
+external/psychgenerator/psychgenerator_trained_models/ # Entire trained model dir for submodule
+external/psychgenerator/processed_data/ # Large generated data in submodule
+external/psychgenerator/runs/ # Tensorboard runs in submodule
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Log files
+*.log
+logs/
+wandb/ 

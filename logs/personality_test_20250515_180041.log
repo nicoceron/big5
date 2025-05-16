@@ -1,0 +1,5 @@
+2025-05-15 18:00:41,385 - __main__ - INFO - Running personality test for trait: c
+2025-05-15 18:00:41,385 - __main__ - INFO - Prompt: Describe how you would organize a complex project with multiple deadlines.
+2025-05-15 18:00:41,385 - __main__ - INFO - Generating response with gemma3-conscientiousness:latest
+2025-05-15 18:01:14,385 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
+2025-05-15 18:01:14,386 - __main__ - INFO - Personality test completed successfully

@@ -1,0 +1,5 @@
+topic,persona,dialogue,narrative,PersonX,PersonY
+Climate change,Environmental activist,"[{\"speaker\": \"PersonX\", \"text\": \"We need to act on climate change now.\"}]",A discussion about climate change,Alex,Taylor
+Technology,Software engineer,"[{\"speaker\": \"PersonX\", \"text\": \"I think AI will change everything.\"}]",A conversation about technology trends,Jordan,Casey
+Politics,Political analyst,"[{\"speaker\": \"PersonX\", \"text\": \"The current political landscape is complex.\"}]",A debate about politics,Morgan,Riley
+Education,Teacher,"[{\"speaker\": \"PersonX\", \"text\": \"Education should be more accessible to everyone.\"}]",A discussion about education reform,Sam,Pat
