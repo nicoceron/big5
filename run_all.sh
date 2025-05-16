@@ -4,7 +4,6 @@ set -e
 # Create directories
 mkdir -p data
 mkdir -p logs
-mkdir -p checkpoint
 mkdir -p modelfiles
 
 echo "=== BIG5Chat Training Workflow ==="
@@ -12,19 +11,19 @@ echo "This script will train the BIG5Chat personality models."
 
 # Step 0: Check if Ollama is running and set up models
 echo -e "\n0. Setting up Ollama personality models..."
-python setup_ollama_models.py --base-model gemma3
+python scripts/utils/setup_ollama_models.py --base-model gemma3
 
 # Step 1: Create directories and prepare data
 echo -e "\n1. Creating sample dataset..."
-python create_datasets.py sample --output-path data/sample_dataset
+python scripts/data_preparation/create_datasets.py sample --output-path data/sample_dataset
 
 # Step 2: Load the SODA dataset for training
 echo -e "\n2. Loading SODA dataset..."
-python load_soda.py --split train --output-dir data/soda --max-examples 1000 --require-topic --require-persona --skip-existing
+python scripts/data_preparation/load_soda.py --split train --output-dir data/soda --max-examples 1000 --require-topic --require-persona --skip-existing
 
 # Skip classifier training if it takes too long
 echo -e "\n3. Skipping classifier training (would take too long on CPU)..."
-# python train.py train-classifier \
+# python scripts/training/train.py train-classifier \
 #    --train-dataset data/sample_dataset/train \
 #    --val-dataset data/sample_dataset/val \
 #    --test-dataset data/sample_dataset/test
@@ -44,7 +43,7 @@ for trait in o c e a n; do
   esac
   
   echo -e "\n4.$trait. Generating profiles for $trait_name..."
-  python train.py generate-profiles \
+  python scripts/training/train.py generate-profiles \
     --input-file data/soda/soda_train.csv \
     --output-file data/soda/profiles_${trait}.jsonl \
     --trait $trait \
@@ -65,7 +64,7 @@ for trait in o c e a n; do
   esac
   
   echo -e "\n5.$trait. Testing personality adaptation for $trait_name..."
-  python run_personality_test.py --trait $trait --input-file data/soda/soda_train.csv \
+  python scripts/evaluation/run_personality_test.py --trait $trait --input-file data/soda/soda_train.csv \
     --output-file logs/personality_test_${trait}.json
 done
 

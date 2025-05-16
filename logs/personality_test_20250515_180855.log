@@ -1,5 +1,0 @@
-2025-05-15 18:08:55,643 - __main__ - INFO - Running personality test for trait: o
-2025-05-15 18:08:55,644 - __main__ - INFO - Prompt: Describe how you would approach learning a completely new skill that is outside your comfort zone.
-2025-05-15 18:08:55,644 - __main__ - INFO - Generating response with gemma3-openness:latest
-2025-05-15 18:09:28,402 - httpx - INFO - HTTP Request: POST http://127.0.0.1:11434/api/chat "HTTP/1.1 200 OK"
-2025-05-15 18:09:28,404 - __main__ - INFO - Personality test completed successfully

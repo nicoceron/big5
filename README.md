@@ -47,26 +47,26 @@ BIG5Chat is a framework designed to generate personality-steered conversational 
 
 ### Testing Personality Traits
 
-Use the `run_personality_test.py` script to test different personality traits:
+Use the `scripts/evaluation/run_personality_test.py` script to test different personality traits:
 
 ```bash
 # Test with openness trait
-python run_personality_test.py --trait o
+python scripts/evaluation/run_personality_test.py --trait o
 
 # Test with conscientiousness trait
-python run_personality_test.py --trait c
+python scripts/evaluation/run_personality_test.py --trait c
 
 # Test with extraversion trait
-python run_personality_test.py --trait e
+python scripts/evaluation/run_personality_test.py --trait e
 
 # Test with agreeableness trait
-python run_personality_test.py --trait a
+python scripts/evaluation/run_personality_test.py --trait a
 
 # Test with neuroticism trait
-python run_personality_test.py --trait n
+python scripts/evaluation/run_personality_test.py --trait n
 
 # You can also provide a custom prompt
-python run_personality_test.py --trait o --prompt "How would you approach solving a difficult problem?"
+python scripts/evaluation/run_personality_test.py --trait o --prompt "How would you approach solving a difficult problem?"
 ```
 
 ### Training the RoBERTa Classifier
@@ -75,10 +75,10 @@ To train the personality classifier:
 
 ```bash
 # Create sample dataset
-python create_datasets.py sample
+python scripts/data_preparation/create_datasets.py sample
 
 # Train the classifier
-python train.py train-classifier \
+python scripts/training/train.py train-classifier \
   --train-dataset data/sample_dataset/train \
   --val-dataset data/sample_dataset/val \
   --test-dataset data/sample_dataset/test
@@ -100,13 +100,29 @@ This will:
 
 ## Project Structure
 
-- `llm_personality/classifier/`: RoBERTa-based classifier for personality traits
-- `llm_personality/dexpert/`: DExpert model for steering LLM outputs based on personality traits
-- `llm_personality/profile_creation/`: Tools for creating personality profiles
-- `train.py`: Main script for training the models
-- `create_datasets.py`: Tool for creating and preprocessing datasets
-- `run_personality_test.py`: Script for testing personality-specific text generation
-- `run_all.sh`: Convenience script to run the full pipeline
+```
+big5/
+├── data/                      # Data files and datasets
+│   ├── sample_dataset/        # Sample training data
+│   ├── sft_alpaca/            # SFT data in alpaca format
+│   ├── soda/                  # SODA dialogue dataset
+│   └── synthetic_psychgenerator/ # Synthetic personality data
+├── llm_personality/           # Core personality framework
+│   ├── classifier/            # RoBERTa-based classifier
+│   ├── dexpert/               # DExpert model for steering outputs
+│   └── profile_creation/      # Tools for creating profiles
+├── modelfiles/                # Ollama model definitions
+├── scripts/                   # Organized scripts
+│   ├── data_preparation/      # Data preparation scripts
+│   ├── evaluation/            # Evaluation scripts
+│   ├── training/              # Training scripts
+│   └── utils/                 # Utility scripts
+├── external/                  # External dependencies
+├── eval_results/              # Evaluation result files
+├── logs/                      # Log files
+├── requirements.txt           # Python dependencies
+└── run_all.sh                 # Main script to run the pipeline
+```
 
 ## Personality Traits
 
