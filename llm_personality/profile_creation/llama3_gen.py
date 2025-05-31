@@ -201,7 +201,7 @@ class CO3Sotopia():
 
         # Process the data (self.data is already chunked)
         for idx, env_info in tqdm(enumerate(self.data), total=len(self.data)):
-            current_data_original_idx = (self.args.chunk.split("/")[0]-1)*(len(self.data) // self.args.chunk.split("/")[1] ) + idx # Map current loop idx to original SODA idx if chunking
+            current_data_original_idx = (int(self.args.chunk.split("/")[0])-1)*(len(self.data) // int(self.args.chunk.split("/")[1])) + idx # Map current loop idx to original SODA idx if chunking
             actual_env_idx_for_output = idx # Use loop index for records within this chunk
 
             if actual_env_idx_for_output < start_idx:

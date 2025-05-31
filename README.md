@@ -145,6 +145,25 @@ This project uses Ollama to run local Gemma3 models tuned for different personal
 - `gemma3-neuroticism`: Tuned for responses exhibiting high neuroticism
 - `gemma3:12b`: Base model for comparison
 
+## Technologies Used
+
+BIG5Chat leverages a stack of modern machine learning and natural language processing technologies:
+
+- **LLMs**: Llama3 and Gemma3 models for personality-steered text generation
+- **Hugging Face Transformers**: Provides access to RoBERTa-large for classifier training and inference
+- **PyTorch**: Deep learning framework used for model training and inference
+- **PEFT**: Parameter-Efficient Fine-Tuning for adapting LLMs to personality traits
+- **Ollama**: Local LLM deployment framework for running personality-tuned models
+- **TRL (Transformer Reinforcement Learning)**: Framework for fine-tuning language models
+- **Datasets**: Hugging Face's library for working with and processing datasets
+- **BitsAndBytes**: Quantization library for efficient model inference
+- **Accelerate**: Library for distributed training
+- **Weights & Biases**: Used for experiment tracking and visualization
+- **scikit-learn**: For evaluation metrics and data processing
+- **DExpert**: Personality steering technique based on model mixtures
+
+The framework is optimized for both CUDA (NVIDIA GPUs) and MPS (Apple Silicon) accelerators, allowing efficient training and inference across different hardware platforms.
+
 ## Troubleshooting
 
 - If you encounter errors about missing models, make sure Ollama is running (`ollama serve`) and you have the required models installed.

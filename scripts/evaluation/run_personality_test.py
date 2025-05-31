@@ -77,70 +77,74 @@ def run_personality_test(args):
     # Get the model name for the specified trait
     model_name = get_model_name(args.trait, "high")
     
-    # Determine the prompt to use
-    if args.input_file:
-        # Load data from the input file
-        data = load_data(args.input_file)
-        if not data:
-            return False
+    results = []
+    
+    # Handle multiple examples
+    for i in range(args.num_examples):
+        logger.info(f"Processing example {i+1}/{args.num_examples}")
         
-        # Use either the specified example index or select a random example
-        if args.example_index is not None and args.example_index < len(data):
-            example = data[args.example_index]
-        else:
-            example = random.choice(data)
-        
-        # Use the provided prompt field if available, otherwise construct from topic
-        if args.prompt:
-            prompt = args.prompt
-        elif "prompt" in example:
-            prompt = example["prompt"]
-        else:
-            topic = example.get("topic", "")
-            persona = example.get("persona", "")
-            if persona:
-                prompt = f"You are {persona}. What are your thoughts on {topic}?"
+        # Determine the prompt to use
+        if args.input_file:
+            # Load data from the input file
+            data = load_data(args.input_file)
+            if not data:
+                return False
+            
+            # Use either the specified example index or select a random example
+            if args.example_index is not None and args.example_index < len(data):
+                example = data[args.example_index]
             else:
-                prompt = f"What are your thoughts on {topic}?"
-        
-        # Print information about the selected example
-        logger.info(f"Using example with topic: {example.get('topic', 'None')}")
-        if 'persona' in example:
-            logger.info(f"Persona: {example.get('persona', 'None')}")
-        if 'dialogue' in example and example['dialogue']:
-            logger.info(f"Contains dialogue with {len(example['dialogue'])} turns")
-    else:
-        # Use the provided prompt or a default one
-        if args.prompt:
-            prompt = args.prompt
+                example = random.choice(data)
+            
+            # Use the provided prompt field if available, otherwise construct from topic
+            if args.prompt:
+                prompt = args.prompt
+            elif "prompt" in example:
+                prompt = example["prompt"]
+            else:
+                topic = example.get("topic", "")
+                persona = example.get("persona", "")
+                if persona:
+                    prompt = f"You are {persona}. What are your thoughts on {topic}?"
+                else:
+                    prompt = f"What are your thoughts on {topic}?"
+            
+            # Print information about the selected example
+            logger.info(f"Using example with topic: {example.get('topic', 'None')}")
+            if 'persona' in example:
+                logger.info(f"Persona: {example.get('persona', 'None')}")
+            if 'dialogue' in example and example['dialogue']:
+                logger.info(f"Contains dialogue with {len(example['dialogue'])} turns")
         else:
-            # Default prompts for each trait
-            if args.trait == 'o':
-                prompt = "Describe how you would approach learning a completely new skill that is outside your comfort zone."
-            elif args.trait == 'c':
-                prompt = "Describe how you would organize a complex project with multiple deadlines."
-            elif args.trait == 'e':
-                prompt = "Describe how you would behave at a social gathering where you don't know many people."
-            elif args.trait == 'a':
-                prompt = "Describe how you would handle a situation where someone disagrees strongly with your opinion."
-            elif args.trait == 'n':
-                prompt = "Describe how you would respond to receiving unexpected criticism about your work."
-    
-    logger.info(f"Prompt: {prompt}")
-    
-    # Generate responses
-    logger.info(f"Generating response with {model_name}")
-    response = generate_response(model_name, prompt)
-    
-    print(f"\n=== Response using {model_name} ===")
-    print(response)
-    print("===================================\n")
-
-    # Save the response to file if output path is provided
-    if args.output_file:
-        os.makedirs(os.path.dirname(args.output_file), exist_ok=True)
+            # Use the provided prompt or a default one
+            if args.prompt:
+                prompt = args.prompt
+            else:
+                # Default prompts for each trait
+                if args.trait == 'o':
+                    prompt = "Describe how you would approach learning a completely new skill that is outside your comfort zone."
+                elif args.trait == 'c':
+                    prompt = "Describe how you would organize a complex project with multiple deadlines."
+                elif args.trait == 'e':
+                    prompt = "Describe how you would behave at a social gathering where you don't know many people."
+                elif args.trait == 'a':
+                    prompt = "Describe how you would handle a situation where someone disagrees strongly with your opinion."
+                elif args.trait == 'n':
+                    prompt = "Describe how you would respond to receiving unexpected criticism about your work."
         
+        logger.info(f"Prompt: {prompt}")
+        
+        # Generate responses
+        logger.info(f"Generating response with {model_name}")
+        response = generate_response(model_name, prompt)
+        
+        print(f"\n=== Response {i+1} using {model_name} ===")
+        print(response)
+        print("===================================\n")
+
+        # Store result
         result = {
+            "example_number": i+1,
             "trait": args.trait,
             "model": model_name,
             "prompt": prompt,
@@ -152,9 +156,27 @@ def run_personality_test(args):
         if args.input_file and 'example' in locals():
             result["example"] = example
             
+        results.append(result)
+
+    # Save the results to file if output path is provided
+    if args.output_file:
+        os.makedirs(os.path.dirname(args.output_file), exist_ok=True)
+        
+        final_result = {
+            "trait": args.trait,
+            "model": model_name,
+            "num_examples": args.num_examples,
+            "results": results,
+            "summary": {
+                "total_examples": len(results),
+                "successful_responses": len([r for r in results if not r["response"].startswith("Error:")]),
+                "timestamp": datetime.now().isoformat()
+            }
+        }
+        
         with open(args.output_file, 'w') as f:
-            json.dump(result, f, indent=2)
-        logger.info(f"Saved response to {args.output_file}")
+            json.dump(final_result, f, indent=2)
+        logger.info(f"Saved {len(results)} responses to {args.output_file}")
 
     return True
 
@@ -169,6 +191,8 @@ def main():
                        help="Input file (CSV or JSONL) containing topics and prompts")
     parser.add_argument("--example-index", type=int,
                        help="Index of the example to use from the input file (if not specified, a random example will be chosen)")
+    parser.add_argument("--num-examples", type=int, default=1,
+                       help="Number of examples to test (default: 1)")
     parser.add_argument("--output-file", "-o", type=str,
                        help="Output file to save the response as JSON")
     

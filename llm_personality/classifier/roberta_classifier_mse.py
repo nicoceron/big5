@@ -1,4 +1,5 @@
 import torch
+import os
 from transformers import RobertaTokenizer, RobertaConfig, TrainingArguments, Trainer
 from modeling_roberta import RobertaForSequenceClassification
 from datasets import Dataset
@@ -33,7 +34,7 @@ logger.info(f"Using device: {device}")
 from datasets import load_from_disk
 train_dataset = load_from_disk("data/sample_dataset/train")
 val_dataset = load_from_disk("data/sample_dataset/val")
-test_dataset = load_from_disk("data/sample_dataset/test") if "data/sample_dataset/test" else None
+test_dataset = load_from_disk("data/sample_dataset/test") if "data/sample_dataset/test" and os.path.exists("data/sample_dataset/test") else None
 
 logger.info("Loaded datasets. Preprocessing...")
 
@@ -79,7 +80,7 @@ model = RobertaForSequenceClassification.from_pretrained("roberta-large", num_la
 
 training_args = TrainingArguments(
     output_dir="checkpoint/",
-    evaluation_strategy="steps",
+    eval_strategy="steps",
     eval_steps=500,
     learning_rate=1e-5,
     per_device_train_batch_size=4,          # Reduced batch size for MPS

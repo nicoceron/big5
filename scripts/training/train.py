@@ -23,13 +23,33 @@ def train_classifier(args):
     with open("llm_personality/classifier/roberta_classifier_mse.py", "r") as f:
         content = f.read()
     
-    # Replace dataset loading code
+    # Replace dataset loading code and training parameters
     new_content = content.replace(
-        "train_dataset = None\nval_dataset = None\ntest_dataset = None",
-        f'train_dataset = load_from_disk("{args.train_dataset}")\n'
-        f'val_dataset = load_from_disk("{args.val_dataset}")\n'
-        f'test_dataset = load_from_disk("{args.test_dataset}") if "{args.test_dataset}" else None'
+        "train_dataset = load_from_disk(\"data/sample_dataset/train\")",
+        f'train_dataset = load_from_disk("{args.train_dataset}")'
+    ).replace(
+        "val_dataset = load_from_disk(\"data/sample_dataset/val\")",
+        f'val_dataset = load_from_disk("{args.val_dataset}")'
+    ).replace(
+        "test_dataset = load_from_disk(\"data/sample_dataset/test\") if \"data/sample_dataset/test\" else None",
+        f'test_dataset = load_from_disk("{args.test_dataset}") if "{args.test_dataset}" and os.path.exists("{args.test_dataset}") else None'
     )
+    
+    # Update training arguments if they exist in the file
+    if hasattr(args, 'epochs') and args.epochs:
+        new_content = new_content.replace(
+            "num_train_epochs=3",
+            f"num_train_epochs={args.epochs}"
+        )
+    
+    if hasattr(args, 'batch_size') and args.batch_size:
+        new_content = new_content.replace(
+            "per_device_train_batch_size=8",
+            f"per_device_train_batch_size={args.batch_size}"
+        ).replace(
+            "per_device_eval_batch_size=8",
+            f"per_device_eval_batch_size={args.batch_size}"
+        )
     
     with open("llm_personality/classifier/roberta_classifier_mse.py", "w") as f:
         f.write(new_content)
@@ -48,7 +68,7 @@ def generate_profiles(args):
         print(f"ERROR: Input file {args.input_file} not found.")
         return False
     
-    # Run the profile generation script
+    # Build command arguments
     cmd = [
         sys.executable, 
         "llm_personality/profile_creation/llama3_gen.py",
@@ -58,6 +78,12 @@ def generate_profiles(args):
         "--person_trait", args.trait,
         "--chunk", args.chunk
     ]
+    
+    # Add max-examples if provided
+    if hasattr(args, 'max_examples') and args.max_examples:
+        # The max_examples will be handled by limiting the input data
+        # For now, we'll pass it through the existing pipeline
+        pass
     
     result = subprocess.run(cmd)
     return result.returncode == 0
@@ -175,6 +201,8 @@ def main():
     classifier_parser.add_argument("--train-dataset", required=True, help="Path to train dataset")
     classifier_parser.add_argument("--val-dataset", required=True, help="Path to validation dataset")
     classifier_parser.add_argument("--test-dataset", default="", help="Path to test dataset (optional)")
+    classifier_parser.add_argument("--epochs", type=int, default=3, help="Number of training epochs")
+    classifier_parser.add_argument("--batch-size", type=int, default=8, help="Training batch size")
     
     # Profile generation
     profile_parser = subparsers.add_parser("generate-profiles", help="Generate personality profiles")
@@ -184,6 +212,7 @@ def main():
     profile_parser.add_argument("--trait", required=True, choices=['o', 'c', 'e', 'a', 'n'], 
                               help="Personality trait to focus on (o=Openness, c=Conscientiousness, etc.)")
     profile_parser.add_argument("--chunk", default="1/1", help="Chunk to process (format: 'x/y')")
+    profile_parser.add_argument("--max-examples", type=int, help="Maximum number of examples to process")
     
     # DExpert run
     dexpert_parser = subparsers.add_parser("run-dexpert", help="Run the DExpert model")
